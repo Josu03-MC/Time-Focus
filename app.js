@@ -6,7 +6,7 @@ const PORT    = process.env.PORT || 3000;
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
-// ✅ CORREGIDO: los estáticos están en src/public, no en public
+
 app.use(express.static(path.join(__dirname, 'src/public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -43,6 +43,10 @@ app.get('/dashboard', (req, res) => {
 });
 
 // ── TEMAS
+app.get('/temas/nueva', (req, res) => {
+  res.render('temas/nueva', { title: 'Nuevo Tema', currentPage: 'temas' });
+});
+
 app.get('/temas', (req, res) => {
   res.render('temas/index', { title: 'Temas', currentPage: 'temas' });
 });

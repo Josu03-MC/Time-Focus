@@ -80,20 +80,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ── FORM PILLS (selección única + hidden input) ───────────────
-  document.querySelectorAll('.form-pills-row').forEach(grupo => {
-    grupo.querySelectorAll('.form-pill').forEach(pill => {
-      pill.addEventListener('click', () => {
-        grupo.querySelectorAll('.form-pill').forEach(p => p.classList.remove('form-pill--active'));
-        pill.classList.add('form-pill--active');
-
-        // Actualizar input hidden si existe
-        const fieldName = pill.getAttribute('name');
-        const hiddenInput = document.getElementById(`${fieldName}-val`);
-        if (hiddenInput) hiddenInput.value = pill.value;
-      });
-    });
+// ── FORM PILLS ────────────────────────────────────────────────
+document.querySelectorAll('[data-group]').forEach(pill => {
+  pill.addEventListener('click', () => {
+    const grupo = pill.dataset.group;
+    document.querySelectorAll(`[data-group="${grupo}"]`)
+      .forEach(p => p.classList.remove('form-pill--active'));
+    pill.classList.add('form-pill--active');
+    const hidden = document.getElementById(`${grupo}-val`);
+    if (hidden) hidden.value = pill.value;
   });
+});
 
   // ── CHECKBOX DE TAREAS ────────────────────────────────────────
   document.querySelectorAll('.task-list__check').forEach(cb => {
