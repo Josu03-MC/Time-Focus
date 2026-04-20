@@ -75,6 +75,22 @@ app.get('/estadisticas', (req, res) => {
   res.render('estadisticas/index', { title: 'Estadísticas', currentPage: 'estadisticas' });
 });
 
+app.get('/perfil/info', (req, res) => {
+  res.render('perfil/info', { title: 'Mi Información', currentPage: 'perfil' });
+});
+
+app.get('/perfil/metas', (req, res) => {
+  res.render('perfil/metas', { title: 'Metas de Estudio', currentPage: 'perfil' });
+});
+
+app.get('/perfil/notificaciones', (req, res) => {
+  res.render('perfil/notificaciones', { title: 'Notificaciones', currentPage: 'perfil' });
+});
+
+app.get('/perfil/privacidad', (req, res) => {
+  res.render('perfil/privacidad', { title: 'Privacidad de Datos', currentPage: 'perfil' });
+});
+
 // ── PERFIL
 app.get('/perfil', (req, res) => {
   res.render('perfil/index', { title: 'Perfil', currentPage: 'perfil' });
